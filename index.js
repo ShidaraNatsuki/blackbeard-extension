@@ -10,6 +10,7 @@ app.get("/", (req, res) => {
 
 app.post("/", express.json(), async (req, res) => {
   // Identify the user, using the GitHub API token provided in the request headers.
+  console.log("req:", req);
   const tokenForUser = req.get("X-GitHub-Token");
   const octokit = new Octokit({ auth: tokenForUser });
   const user = await octokit.request("GET /user");
